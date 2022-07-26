@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:demo_movement_line_chart/final_demo.dart';
+import 'package:demo_movement_line_chart/images.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
@@ -63,13 +65,19 @@ class _MyHomePageState extends State<_MyHomePage> {
     ];
 
     return Scaffold(
-      body: SizedBox(
+      body: // ..
+          FinalDemo(),
+      // Images(),
+      /*
+
+          SizedBox(
         child: Padding(
           padding: const EdgeInsets.only(top: 10.0),
           child: SizedBox(
             width: MediaQuery.of(context).size.width * 0.7,
             height: MediaQuery.of(context).size.height * 0.7,
             child: SfCartesianChart(
+              enableMultiSelection: true,
               primaryXAxis: NumericAxis(
                 enableAutoIntervalOnZooming: true,
               ),
@@ -138,7 +146,6 @@ class _MyHomePageState extends State<_MyHomePage> {
               // ),
               zoomPanBehavior: ZoomPanBehavior(
                 enablePinching: true,
-                maximumZoomLevel: 0.4,
                 enableDoubleTapZooming: true,
                 enableMouseWheelZooming: true,
                 enableSelectionZooming: true,
@@ -234,12 +241,19 @@ class _MyHomePageState extends State<_MyHomePage> {
               ),
               series: <ChartSeries>[
                 LineSeries<ChartData, int>(
-                    dataSource: chartData1,
-                    isVisibleInLegend: true,
-                    enableTooltip: true,
-                    dataLabelSettings: const DataLabelSettings(isVisible: true),
-                    xValueMapper: (ChartData data, _) => data.x,
-                    yValueMapper: (ChartData data, _) => data.y),
+                  dataSource: chartData1,
+                  isVisibleInLegend: true,
+                  enableTooltip: true,
+                  color: Colors.black,
+                  dataLabelSettings: const DataLabelSettings(isVisible: true),
+                  xValueMapper: (ChartData data, _) => data.x,
+                  yValueMapper: (ChartData data, _) => data.y,
+                  selectionBehavior: SelectionBehavior(
+                    enable: true,
+                    unselectedColor: Colors.grey,
+                    selectedColor: Colors.black,
+                  ),
+                ),
                 LineSeries<ChartData, int>(
                     dataSource: chartData2,
                     color: Colors.red,
@@ -251,6 +265,8 @@ class _MyHomePageState extends State<_MyHomePage> {
           ),
         ),
       ),
+
+//  */
     );
   }
 }
